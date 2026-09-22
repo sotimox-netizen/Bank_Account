@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Setuptools / pip packaging
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Test & coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+
+# Logs (keep the directory, ignore actual log files)
+logs/*.log
+logs/*.log.*
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# macOS
+.DS_Store
