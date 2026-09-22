@@ -31,8 +31,8 @@ Bank.ProjectZ/
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/sotimox-netizen/Bank.ProjectZ.git
-cd Bank.ProjectZ
+git clone https://github.com/sotimox-netizen/Bank_Account.git
+cd Bank_Account
 
 # Установить пакет в режиме разработки
 pip install -e ".[dev]"
