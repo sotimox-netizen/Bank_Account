@@ -2,7 +2,7 @@
 name = "bank_account_project"
 version = "0.1.0"
 description = "Пример лабораторной работы по структуре Python-проекта"
-authors = [{name = "НЕ ПОТЕШКИН", email = "your@email.com"}]
+authors = [{name = "НЕ ПОТЕШКИН", email = "sotimox@gmail.com"}]
 dependencies = []
 
 [project.optional-dependencies]
@@ -41,3 +41,7 @@ addopts = "-ra -q --cov=src --cov-report=term-missing"
 testpaths = ["tests"]
 python_files = "test_*.py"
 python_functions = "test_*"
+markers = [
+    "smoke: быстрые ключевые тесты",
+    "regression: полные регрессионные проверки",
+]

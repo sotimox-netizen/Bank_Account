@@ -54,7 +54,7 @@ class BankAccount:
             raise NegativeInitialBalanceError(
                 f"Начальный баланс не может быть отрицательным: {balance}"
             )
-        self.owner = owner
+        self._owner = owner
         self._balance = float(balance)
         self._transactions: list[tuple[str, float]] = []
 
@@ -65,7 +65,7 @@ class BankAccount:
             )
         self._balance += amount
         self._add_transaction(TransactionType.DEPOSIT, amount)
-        logger.info("deposit successful")
+        logger.info(f"{self._owner} deposit successful on {amount}")
 
     def withdraw(self, amount: float) -> None:
         if amount <= 0:
@@ -78,25 +78,25 @@ class BankAccount:
             )
         self._balance -= amount
         self._add_transaction(TransactionType.WITHDRAW, amount)
-        logger.info("withdraw successful")
+        logger.info(f"{self._owner} withdraw successful on {amount}")
 
     @property
     def balance(self) -> float:
         return self._balance
 
     @property
-    def get_owner(self) -> str:
-        return self.owner
+    def owner(self) -> str:
+        return self._owner
 
     @property
-    def transactions(self) -> list[tuple[str, float]]:
-        return self._transactions
+    def transactions(self) -> tuple(list[tuple[str, float]]):
+        return tuple(self._transactions)
 
     def _add_transaction(self, transaction_type: TransactionType, amount: float) -> None:
         self._transactions.append((transaction_type.name, amount))
 
     def __repr__(self) -> str:
-        return f"BankAccount(owner={self.owner!r}, balance={self._balance})"
+        return f"BankAccount(owner={self._owner!r}, balance={self._balance})"
 
     def __str__(self) -> str:
-        return f"Счёт [{self.owner}]: {self._balance:.2f} руб."
+        return f"Счёт [{self._owner}]: {self._balance:.2f} руб."
