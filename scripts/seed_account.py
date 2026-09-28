@@ -10,12 +10,10 @@ from src.bank_account.exceptions import InsufficientFundsError, InvalidAmountErr
 
 
 def print_line() -> None:
-    """Печатает разделительную линию."""
     print("=" * 50)
 
 
 def print_logs(accounts: dict) -> None:
-    """Выводит последнюю транзакцию по каждому счёту."""
     for name, account in accounts.items():
         transactions = account.transactions
         if transactions:
@@ -25,13 +23,11 @@ def print_logs(accounts: dict) -> None:
 
 
 def print_users(accounts: dict) -> None:
-    """Выводит текущий баланс каждого счёта."""
     for name, account in accounts.items():
         print(name, " | ", account.balance)
 
 
 def run_user_commands(accounts: dict) -> None:
-    """Выполняет случайные операции (депозит/снятие) для каждого счёта."""
     for name, account in accounts.items():
         try:
             command_type = random.randint(1, 2)

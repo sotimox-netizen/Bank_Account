@@ -46,7 +46,6 @@ class TransactionType(IntEnum):
 
 
 class BankAccount:
-    """Банковский счёт с поддержкой депозита, снятия и истории транзакций."""
 
     def __init__(self, owner: str, balance: float) -> None:
         if not owner or not owner.strip():
@@ -60,7 +59,6 @@ class BankAccount:
         self._transactions: list[tuple[str, float]] = []
 
     def deposit(self, amount: float) -> None:
-        """Пополняет счёт на указанную сумму."""
         if amount <= 0:
             raise InvalidAmountError(
                 f"Сумма пополнения должна быть положительной, получено: {amount}"
@@ -70,7 +68,6 @@ class BankAccount:
         logger.info("deposit successful")
 
     def withdraw(self, amount: float) -> None:
-        """Снимает указанную сумму со счёта."""
         if amount <= 0:
             raise InvalidAmountError(
                 f"Сумма снятия должна быть положительной, получено: {amount}"
@@ -85,12 +82,14 @@ class BankAccount:
 
     @property
     def balance(self) -> float:
-        """Текущий баланс счёта."""
         return self._balance
 
     @property
+    def get_owner(self) -> str:
+        return self.owner
+
+    @property
     def transactions(self) -> list[tuple[str, float]]:
-        """История всех транзакций."""
         return self._transactions
 
     def _add_transaction(self, transaction_type: TransactionType, amount: float) -> None:

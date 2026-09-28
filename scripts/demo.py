@@ -8,7 +8,6 @@ from src.bank_account.exceptions import InsufficientFundsError, InvalidAmountErr
 
 
 def get_numeric_input() -> int:
-    """Запрашивает у пользователя целое число, повторяя запрос при ошибке."""
     while True:
         try:
             return int(input())
